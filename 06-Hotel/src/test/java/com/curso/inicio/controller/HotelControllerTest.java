@@ -34,10 +34,7 @@ class HotelControllerTest {
 	public void setup() {
 		Hotel hotel1 = new Hotel(1L, "Hotel Paraíso", Categoria.CINCO_ESTRELLAS, 250.50, true);
 		Hotel hotel2 = new Hotel(2L, "Hotel Luna", Categoria.CUATRO_ESTRELLAS, 150.75, true);
-		Hotel hotel3 = new Hotel(3L, "Hotel Sol", Categoria.TRES_ESTRELLAS, 100.00, false);
 		Hotel hotel4 = new Hotel(4L, "Hotel Estrella", Categoria.DOS_ESTRELLAS, 75.25, true);
-		Hotel hotel5 = new Hotel(5L, "Hotel Cielo", Categoria.UNA_ESTRELLA, 50.00, false);
-		List<Hotel> hoteles = List.of(hotel1, hotel2, hotel3, hotel4, hotel5);
 		List<Hotel> hotelesDisponibles = List.of(hotel1, hotel2, hotel4);
 		when(service.buscarHotelesDisponibles()).thenReturn(hotelesDisponibles);
 		when(service.buscarPorNombre("Hotel Paraíso")).thenReturn(hotel1);
