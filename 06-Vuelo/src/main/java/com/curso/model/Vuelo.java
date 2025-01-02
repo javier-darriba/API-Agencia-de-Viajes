@@ -46,6 +46,10 @@ public class Vuelo {
 		this.plazasDisponibles = plazasDisponibles;
 	}
 
+	public Vuelo(long l, Compania vueling, String string, double d, int i) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getIdVuelo() {
 		return idVuelo;
 	}
