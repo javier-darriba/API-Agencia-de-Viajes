@@ -17,13 +17,13 @@ Este repositorio contiene tres microservicios desarrollados en **Spring Boot** p
   
 ## Entidades
 ### 1. **Reserva**
-- Representa una reserva con las propiedades **idReserva**, **nombreCliente**, **dni**, **idHotel** e **idVuelo**.
+- Representa una reserva con las propiedades identificador, nombre, dni e identificadores del hotel y vuelo.
 
 ### 2. **Hotel**
-- Representa un hotel con las propiedades **idHotel**, **nombre**, **disponible** (booleano), etc.
+- Representa un hotel contiene las propiedades identificador, nombre, categoría, precio y disponibilidad.
 
 ### 3. **Vuelo**
-- Representa un vuelo con las propiedades **idVuelo**, **origen**, **destino**, **fecha**, **plazasDisponibles**, etc.
+- Representa un vuelo con las propiedades identificador, compañía, fecha, precio y plazas disponilbes.
 
 ## Servicios
 
@@ -34,20 +34,30 @@ Este microservicio proporciona funcionalidades para gestionar los hoteles.
 #### Funcionalidades
 1. **Listar hoteles disponibles**
 2. **Buscar un hotel por nombre**
-3. **Comprobar si un hotel existe por su identificador o nombre**
+3. **Obtener identificador del hotel por nombre**
+4. **Comprobar si un hotel existe por su identificador**
+5. **Comprobar si un hotel existe por su nombre**
 
 #### Endpoints
 **Puerto 8080**
 1. **Listar hoteles disponibles**
-   - **URL**: `/hoteles`
+   - **URL**: `/api/hoteles/disponibles`
    - **Método**: `GET`
 
 2. **Buscar hotel por nombre**
-   - **URL**: `/hoteles/nombre/{nombre}`
+   - **URL**: `/api/hoteles/{nombre}`
    - **Método**: `GET`
 
-3. **Comprobar existencia de hotel por identificador**
-   - **URL**: `/hoteles/{idHotel}/existe`
+3. **Obtener identificador del hotel por nombre**
+   - **URL**: `/api/hoteles/identificadores/{nombre}`
+   - **Método**: `GET`
+
+4. **Comprobar existencia de hotel por identificador**
+   - **URL**: `/api/hoteles/existe/{idHotel}`
+   - **Método**: `GET`
+
+5. **Comprobar si un hotel existe por su nombre**
+   - **URL**: `/api/hoteles/existe/nombre/{nombreHotel}`
    - **Método**: `GET`
 
 ### **Servicio de Vuelos**
@@ -55,65 +65,45 @@ Este microservicio proporciona funcionalidades para gestionar los hoteles.
 Este microservicio proporciona funcionalidades para gestionar los vuelos.
 
 #### Funcionalidades
-1. **Listar vuelos disponibles**
-2. **Comprobar si un vuelo existe por su identificador**
+1. **Listar vuelos con suficientes plazas disponibles**
+2. **Actualizar las plazas disponibles de un vuelo**
+3. **Comprobar si un vuelo existe por su identificador**
 
 #### Endpoints
 **Puerto 9090**
-1. **Listar vuelos disponibles**
-   - **URL**: `/vuelos`
+1. **Listar vuelos con suficientes plazas disponibles*
+   - **URL**: `/api/vuelos/disponibles/{plazas}`
    - **Método**: `GET`
+  
+2. **Actualizar las plazas disponibles de un vuelo**
+   - **URL**: `/api/vuelos/reservar/{idVuelo}/{plazasReservadas}`
+   - **Método**: `PUT`
 
-2. **Comprobar existencia de vuelo por identificador**
-   - **URL**: `/vuelos/{idVuelo}/existe`
+3. **Comprobar existencia de vuelo por identificador**
+   - **URL**: `/api/vuelos/existe/{idVuelo}`
    - **Método**: `GET`
 
 ### **Servicio de Reservas**
 
-Este microservicio gestiona las reservas de vuelos y hoteles. Interactúa con los microservicios de **hoteles** y **vuelos** para comprobar la existencia de los mismos antes de proceder con la reserva.
+Este microservicio gestiona las reservas de vuelos y hoteles. Interactúa con los microservicios de **hoteles** y **vuelos** para comprobar que se puedan realizar dichas operaciones y actualizar la información de esas entidades tras la reserva.
 
 #### Funcionalidades
-1. **Crear una nueva reserva**: Verifica que el vuelo y el hotel existen antes de realizar la reserva.
-2. **Obtener reservas por nombre de hotel**: Devuelve todas las reservas asociadas a un hotel específico.
+1. **Crear una nueva reserva**:
+2. **Obtener reservas por nombre de hotel**:
 
 #### Endpoints
-**Puerto 8081**
+**Puerto 9000**
 1. **Crear nueva reserva**
-   - **URL**: `/reservas`
+   - **URL**: `/api/reservas`
    - **Método**: `POST`
 
 2. **Obtener reservas por nombre de hotel**
-   - **URL**: `/reservas/hotel/{nombreHotel}`
+   - **URL**: `/api/reservas/hoteles/{nombreHotel}`
    - **Método**: `GET`
 
 ## Estado del Proyecto
-- **Borrador**: Funcionalidades básicas implementadas.
-- **Implementado**:
-  - Alta de reserva.
-  - Listado de hoteles y vuelos.
-  - Validación de existencia de vuelos y hoteles.
+- **Borrador(02/01/2025)**: Pendiente completar tests unitarios.
 
-## Cómo Ejecutar
-
-### 1. Clonar el repositorio.
-### 2. Acceder al directorio del proyecto.
-### 3. Crear la base de datos en MySQL.
-  Para crear las tablas e introducirle datos puedes utilizar los script.sql que hay en el directorio /source de cada microservicio.
-### 4. Ejecutar los microservicios.
-  Puedes ejecutar los microservicios de manera independiente desde la terminal con el siguiente comando para cada uno:
-  ./mvnw spring-boot:run
-### 5. Acceder a la API a través de sus url.
-
-## Cómo Ejecutar
-
-Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
-
-### 1. Haz un fork del repositorio.
-### 2. Crea una nueva rama: git checkout -b feature/nueva-funcionalidad.
-### 3. Realiza tus cambios y haz un commit.
-### 4. Haz un push a tu rama: git push origin feature/nueva-funcionalidad.
-### 5. Abre un Pull Request.
-
-## Cómo Ejecutar
+## LICENCIA
 
 Este proyecto está bajo la GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 - ver el archivo LICENSE para más detalles.
