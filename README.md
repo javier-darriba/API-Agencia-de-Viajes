@@ -1,6 +1,6 @@
 # API REST Agencia de Viajes
 
-Este repositorio contiene tres microservicios desarrollados en **Spring Boot** para gestionar reservas de vuelos, hoteles y la interacción entre ambos. La aplicación utiliza una base de datos MySQL. La funcionalidad de los microservicios se expone a través de una API REST que se puede consumir con herramientas como Swagger o Postman.
+Este repositorio contiene tres microservicios desarrollados en **Spring Boot** para gestionar reservas de vuelos, hoteles y la interacción entre ambos. La aplicación utiliza una base de datos MySQL. La funcionalidad de los microservicios se expone a través de una API que se puede utilizar a través de herramientas como Postman.
 
 ## Características Principales
 - **Arquitectura basada en microservicios**.
