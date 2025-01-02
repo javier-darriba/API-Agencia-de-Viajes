@@ -102,7 +102,7 @@ Este microservicio gestiona las reservas de vuelos y hoteles. Interactúa con lo
    - **Método**: `GET`
 
 ## Estado del Proyecto
-- **Borrador(02/01/2025)**: Pendiente completar tests unitarios.
+- **Borrador(02/01/2025)**: Pendiente completar tests de los microservicios de vuelos y reservas, crear un manejador de excepciones propio y validar a través de anotaciones de Spring los atributos de las entidades.
 
 ## LICENCIA
 
