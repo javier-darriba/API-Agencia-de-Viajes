@@ -39,21 +39,21 @@ public class ReservaServiceImpl implements ReservaService {
 
 	private void validarHotel(Long idHotel) {
 		Boolean existe = template.getForObject(URL_COMPROBACION_HOTEL, Boolean.class, idHotel);
-		if (Boolean.FALSE.equals(existe)) {
+		if (!existe) {
 			throw new EntityNotFoundException("El hotel con ID " + idHotel + " no existe.");
 		}
 	}
 
 	private void validarHotel(String nombreHotel) {
 		Boolean existe = template.getForObject(URL_COMPROBACION_HOTEL_POR_NOMBRE, Boolean.class, nombreHotel);
-		if (Boolean.FALSE.equals(existe)) {
+		if (!existe) {
 			throw new EntityNotFoundException("El hotel " + nombreHotel + " no existe.");
 		}
 	}
 
 	private void validarVuelo(Long idVuelo) {
 		Boolean existe = template.getForObject(URL_COMPROBACION_VUELO, Boolean.class, idVuelo);
-		if (Boolean.FALSE.equals(existe)) {
+		if (!existe) {
 			throw new EntityNotFoundException("El vuelo con ID " + idVuelo + " no existe.");
 		}
 	}
